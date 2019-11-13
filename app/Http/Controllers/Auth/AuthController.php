@@ -9,17 +9,56 @@ use App\User;
 use Auth;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+// use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class AuthController extends Controller
 {
-	// // public function register(Request $request){
+	public function register(Request $request){
+        
+		$this->validate(request(), [
+			'email' => 'required|string|email|max:255|unique:users',
+			'mobile_number' => 'required|max:10',
+			'roll_number' =>'required|max:11|unique:users',
+			'year'=>'required',
+			'gender'=>'required',
+			'is_hosteler'=>'required',
+		]);
+	
+         $user = User::create(request([ 'email', 'mobile_number','roll_number','year','gender','is_hosteler']));
+		 
 
-	// // }
+	}
+	// protected function validator(request $Request)
+	// {
+ //        // dd('hello');
 
-	 public function username()
-    {
-        return 'username';
-    }
+	// 	return Validator::make($request, [
+	// 		'email' => 'required|string|email|max:255|unique:users',
+	// 		'mobile_number' => 'required|max:10',
+	// 		'roll_number' =>'required|max:11|unique:users',
+	// 		'year'=>'required',
+	// 		'gender'=>'required',
+	// 		'is_hosteler'=>'required',
+	// 	]);
+	// }
+
+	// protected function create(request $Request)
+	// {
+	// 	return User::create([
+	// 		'email' => $data['email'],
+	// 		'mobile_number' =>  $data['mobile_number'],
+	// 		'roll_number' => $data['roll_number'],
+	// 		'year'=> $data['year'],
+	// 		'gender'=> $data['gender'],
+	// 		'is_hosteler'=> $data['is_hosteler'],
+
+	// 	]);
+	// }
+	public function username()
+	{
+		return 'username';
+	}
 
 	public function login(Request $request){ 
 		$validatedData = $request->validate([
