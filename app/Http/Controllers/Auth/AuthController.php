@@ -11,11 +11,12 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 // use Illuminate\Support\Facades\Validator;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
 	public function register(Request $request){
-        
+
 		$this->validate(request(), [
 			'email' => 'required|string|email|max:255|unique:users',
 			'mobile_number' => 'required|max:10',
@@ -24,9 +25,17 @@ class AuthController extends Controller
 			'gender'=>'required',
 			'is_hosteler'=>'required',
 		]);
-	
-         $user = User::create(request([ 'email', 'mobile_number','roll_number','year','gender','is_hosteler']));
-		 
+
+		$user = User::find($request->id);
+		$user->email = $request->email;
+		$user->mobile_number = $request->mobile_number;
+		$user->roll_number = $request->roll_number;
+		$user->year = $request->year;
+		$user->gender = $request->gender;
+		$user->is_hosteler = $request->is_hosteler;
+		$user->save();
+		return response(['message'=>'Data saved successfully']);
+
 
 	}
 	// protected function validator(request $Request)
@@ -119,6 +128,7 @@ class AuthController extends Controller
 				$accessToken = $user->createToken('authToken');
 				$accessToken = $accessToken->accessToken;
 				return response(['username'=>$user,'access_token'=>$accessToken]);
+
 
 			}
 			else{
