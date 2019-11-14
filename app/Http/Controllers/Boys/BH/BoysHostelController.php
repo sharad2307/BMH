@@ -10,8 +10,8 @@ class BoysHostelController extends Controller
 {
    public function select_roommates(Request $request)
    {
-
-    $roommates=User::where('year', $request->year)->where(['hostel', '=', 'bh']);
+    $user = User::find($request->id);
+    $roommates=User::where('year', $user->year)->where(['hostel', '=', 'bh']);
     dd($roommates);
    }
    
