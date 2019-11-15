@@ -11,6 +11,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 // use Illuminate\Support\Facades\Validator;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -23,6 +24,7 @@ class AuthController extends Controller
 			'gender'=>'required',
 			'is_hosteler'=>'required',
 		]);
+
 		$user = User::find($request->id);
 		$user->email = $request->email;
 		$user->mobile_number = $request->mobile_number;
@@ -125,6 +127,7 @@ class AuthController extends Controller
 				$accessToken = $user->createToken('authToken');
 				$accessToken = $accessToken->accessToken;
 				return response(['username'=>$user,'access_token'=>$accessToken]);
+
 
 			}
 			else{
