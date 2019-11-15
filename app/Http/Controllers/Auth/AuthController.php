@@ -23,6 +23,7 @@ class AuthController extends Controller
 			'year'=>'required',
 			'gender'=>'required',
 			'is_hosteler'=>'required',
+			'hostel'=>'required'
 		]);
 
 		$user = User::find($request->id);
@@ -32,6 +33,7 @@ class AuthController extends Controller
 		$user->year = $request->year;
 		$user->gender = $request->gender;
 		$user->is_hosteler = $request->is_hosteler;
+		$user->hostel =$request->hostel;
 		$user->save();
 		return response(['message'=>'Data saved successfully']);
 	}
