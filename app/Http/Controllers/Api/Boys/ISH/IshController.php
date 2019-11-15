@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Boys\Ish;
+namespace App\Http\Controllers\Api\Boys\Ish;
 use App\Http\Controllers\Controller;
 use App\User;
 

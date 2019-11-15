@@ -17,9 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login','Auth\AuthController@login');
-Route::post('/register','Auth\AuthController@register');
-Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
-Route::post('/BH/selectroommates','Boys\BH\BoysHostelController@select_roommates');
-Route::post('/ISH/selectroommates','Boys\ISH\IshController@select_roommates');
+Route::post('/login','Api\Auth\AuthController@login');
+Route::post('/register','Api\Auth\AuthController@register');
+// Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
+Route::post('/BH/selectroommates','Api\Boys\BH\BoysHostelController@select_roommates');
+Route::post('/ISH/selectroommates','Api\Boys\ISH\IshController@select_roommates');
 

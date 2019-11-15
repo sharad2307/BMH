@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Api\Auth;
 // namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -72,7 +72,7 @@ class AuthController extends Controller
 
 	public function login(Request $request){ 
 		$validatedData = $request->validate([
-			'username' => 'required',
+			// 'username' => 'required',
 			'password' => 'required',
 		]);
 		$user = User::where('username', $request->username)->where('password', $request->password)->first();
@@ -89,7 +89,7 @@ class AuthController extends Controller
 			$url= 'http://192.168.0.8:8082/api/profiles/login/';
 			// dd($url);
 			$postData = [
-				'username' => $request->input('username'),
+				// 'username' => $request->input('username'),
 				'password' => $request->input('password'),
 			];
 
@@ -104,12 +104,14 @@ class AuthController extends Controller
 	        //Ignore SSL certificate verification
 			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+			curl_setopt($ch, CURLOPT_FAILONERROR, 1);
 
 			        //get response
 			$output = curl_exec($ch);
-			// dd($output);
+			 // dd($output);
 			// return json_encode($output);        
 			        //Print error if any
+			dd(curl_error($ch));
 			if (curl_errno($ch)) {
 				echo 'error:' . curl_error($ch);
 			}
@@ -118,7 +120,7 @@ class AuthController extends Controller
 			// dd($ch);
 
 			$arr = json_decode($output, true);
-			// dd($arr);
+			dd($arr);
 			if (array_key_exists('username', $arr)) {
 				$user = new User;
 				$user->name = $arr['first_name'];
