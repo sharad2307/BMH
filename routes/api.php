@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login','Auth\AuthController@login');
 Route::post('/register','Auth\AuthController@register');
 Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
-Route::post('/BH/selectroommates','Boys\BH\BoysHostelController@select_roommates');
+Route::get('/BH/selectroommates','Boys\BH\BoysHostelController@select_roommates');
+Route::get('/ISH/selectroommates','Boys\ISH\IshController@select_roommates');
+
