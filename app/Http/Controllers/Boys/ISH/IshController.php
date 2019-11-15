@@ -13,7 +13,7 @@ class IshController extends Controller
    {
     $user = User::find($request->id);
 
-    $roommates=User::where('year','=',$user->year)->where('hostel', $user->hostel)->select('name' ,'username')->get();
+    $roommates=User::where('year','=',$user->year)->where('hostel', $user->hostel)->where('id' , '<>' ,$request->id )->select('name' ,'username')->get();
     return $roommates;
    }
 }
