@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\DB;
 class AuthController extends Controller
 {
 	public function register(Request $request){
-
 		$this->validate(request(), [
 			'email' => 'required|string|email|max:255|unique:users',
 			'mobile_number' => 'required|max:10',
@@ -35,9 +34,9 @@ class AuthController extends Controller
 		$user->is_hosteler = $request->is_hosteler;
 		$user->save();
 		return response(['message'=>'Data saved successfully']);
-
-
 	}
+
+
 	// protected function validator(request $Request)
 	// {
  //        // dd('hello');
@@ -85,7 +84,7 @@ class AuthController extends Controller
 		} 
 		else{ 
 
-			$url= 'http://210.212.85.155:8082/api/profiles/login/';
+			$url= 'http://192.168.0.8:8082/api/profiles/login/';
 			// dd($url);
 			$postData = [
 				'username' => $request->input('username'),
