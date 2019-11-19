@@ -20,7 +20,9 @@ class AuthController extends Controller
 			'year'=>'required',
 			'gender'=>'required',
 			'is_hosteler'=>'required',
+
 			'hostel'=>'required_if:gender,==,Male|nullable', //if condition not working
+			// 'hostel'=>'required'
 		]);
 		$user = User::find($request->id);
 		$user->email = $request->email;
