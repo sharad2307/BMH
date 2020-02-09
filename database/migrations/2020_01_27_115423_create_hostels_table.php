@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ReqTable extends Migration
+class CreateHostelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class ReqTable extends Migration
      */
     public function up()
     {
+        Schema::create('hostels', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('sender');
-            $table->integer('receiver');
-            $table->boolean('status');
-            $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
+            $table->string('hostel_name');
+
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -27,6 +29,6 @@ class ReqTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('hostels');
     }
 }

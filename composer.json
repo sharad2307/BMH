@@ -9,12 +9,14 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "cboden/ratchet": "^0.4.1",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.4",
         "laravel/framework": "^6.2",
         "laravel/passport": "^8.0",
         "laravel/tinker": "^1.0",
-        "laravel/ui": "^1.1"
+        "laravel/ui": "^1.1",
+         "cboden/ratchet": "^0.4"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -35,7 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/" ,
+            "MyApp\\":"src"
         },
         "classmap": [
             "database/seeds",
