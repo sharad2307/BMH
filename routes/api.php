@@ -22,4 +22,5 @@ Route::post('/register','Api\Auth\AuthController@register');
 // Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
 Route::post('/BH/selectroommates','Api\Boys\BH\BoysHostelController@select_roommates');
 Route::post('/ISH/selectroommates','Api\Boys\ISH\IshController@select_roommates');
+Route::post('/checkresults','Api\Auth\CheckResultsController@checkdata');
 

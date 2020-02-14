@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ReqTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class ReqTable extends Migration
      */
     public function up()
     {
-            $table->Increments('id');
-            $table->integer('sender');
-            $table->integer('receiver');
-            $table->boolean('status');
-            $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
+        Schema::create('admins', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +26,6 @@ class ReqTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('admins');
     }
 }

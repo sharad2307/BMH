@@ -31,7 +31,7 @@ class AuthController extends Controller
 //dd($header);
 		
 		$user = User::find($request->id);
-if($header== $user->access_token)
+		if($header== $user->access_token)
 		{
 		$user->email = $request->email;
 		$user->mobile_number = $request->mobile_number;
