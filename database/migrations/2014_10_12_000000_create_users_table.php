@@ -33,8 +33,8 @@ class CreateUsersTable extends Migration
             $table->integer('room_id')->default(0);
             $table->boolean('book_room')->default(false);
             $table->string('type')->default('default');
-            $table->string('access_token')->nullable();
-
+            $table->longText('access_token')->nullable();
+            $table->longText('result_url')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
