@@ -64,7 +64,14 @@ class AuthController extends Controller
 		]);
 		$user = User::where('username', $request->username)->where('password', $request->password)->first();
 		
-		if(isset($user) ){ 
+		if(isset($user) ){
+		 if($user->type==='admin')
+		 {
+		 	$accessToken = $user->access_token;
+			//dd($accessToken);
+			return response(['message'=>'its admin user','access_token'=>$accessToken,
+				'id'=>$user->id,
+		 } 
 			// $user = Auth::user();  
 			$accessToken = $user->access_token;
 			//dd($accessToken);

@@ -70,7 +70,7 @@ class ScrapeCommand extends Command
             //Ignore SSL certificate verification
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            
+            curl_setopt($ch, CURLOPT_FAILONERROR, 1);
 
                     //get response
             $output = curl_exec($ch);
@@ -80,7 +80,7 @@ class ScrapeCommand extends Command
                 print_r('Curl error: ' . curl_error($ch));
             }
 
-            dd($output);
+            // dd($output);
             // return json_encode($output);        
                     //Print error if any
             //dd(curl_error($ch));
@@ -90,9 +90,8 @@ class ScrapeCommand extends Command
 
             curl_close($ch);
             // dd($ch);
-
-            // $arr = json_decode($output, true);
-            // echo $arr;
+            dd($output);
+            
 
         //
     }
