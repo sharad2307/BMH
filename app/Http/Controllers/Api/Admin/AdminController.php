@@ -23,8 +23,8 @@ class AdminController extends Controller
     public function view_rooms()
     {
         $bh=1;
-        $roomsbh = DB::table('floors')->where('id'=$bh)->select('from','to')->get();
-        
+        $roomsbh = DB::table('floors')->where('id','=',$bh)->select('from','to')->get();
+        return $roomsbh;
     }
     public function add_rooms()
     {

@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/login','Api\Auth\AuthController@login');
+Route::post('/admin/addrooms','Api\Admin\AdminController@view_rooms');
 Route::post('/register','Api\Auth\AuthController@register');
 // Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
 Route::post('/BH/selectroommates','Api\Boys\BH\BoysHostelController@select_roommates');
