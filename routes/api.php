@@ -18,8 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/login','Api\Auth\AuthController@login');
-Route::post('/register','Api\Auth\AuthController@register')->middleware('auth:api');
+
+Route::post('/admin/addrooms','Api\Admin\AdminController@view_rooms');
+Route::post('/register','Api\Auth\AuthController@register');
 // Route::post('/boysoption','Boys\BoysOption\HostelController@BoysOption');
-Route::post('/BH/selectroommates','Api\Boys\BH\BoysHostelController@select_roommates')->middleware('auth:api');
-Route::post('/ISH/selectroommates','Api\Boys\ISH\IshController@select_roommates')->middleware('auth:api');
+Route::post('/BH/selectroommates','Api\Boys\BH\BoysHostelController@select_roommates');
+Route::post('/ISH/selectroommates','Api\Boys\ISH\IshController@select_roommates');
+Route::post('/checkresults','Api\Auth\CheckResultsController@checkdata');
+
 
