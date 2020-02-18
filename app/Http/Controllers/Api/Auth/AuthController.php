@@ -110,10 +110,15 @@ class AuthController extends Controller
 				$user->name = $arr['first_name'];
 				$user->username = $arr['username'];
 				$user->password = $request->password;
-				$user->save();
 				$accessToken = $user->createToken('authToken');
 				$accessToken = $accessToken->accessToken;
-				return response(['username'=>$user,'access_token'=>$accessToken]);
+				// dd($accessToken);
+				$user->access_token = $accessToken;
+				// $accessToken = $user->createToken('authToken');
+				// $accessToken = $accessToken->accessToken;
+				$user->save();
+
+				return response(['username'=>$user,]);
 			}
 			else{
 				return response(['message' => 'Invalid Credentials']);
