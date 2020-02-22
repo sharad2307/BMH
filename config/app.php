@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://bmh3.herokuapp.com'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'log'=> 'errorlog',
+    'log'=> 'error_log',
 
     'faker_locale' => 'en_US',
 
@@ -121,7 +121,7 @@ return [
     |
     */
 
-    'key' => env('base64:o5cXjqc4rI6QVimLoBENntYi8bXXwoE8Lng4Gqz1lLk='),
+    'key' => env('APP_KEY','base64:o5cXjqc4rI6QVimLoBENntYi8bXXwoE8Lng4Gqz1lLk='),
 
     'cipher' => 'AES-256-CBC',
 
